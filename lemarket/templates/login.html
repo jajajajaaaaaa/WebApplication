@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login page</title>
+    <meta charset="UTF-8">
+    <link ... href="{{ url_for('static', filename='../templates/css/.css') }}" />
+    <style>
+       body {
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background-color: whitesmoke;
+}
+header {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 50px;
+    background-color: #77a8a8;
+  }
+  #logoAndNav {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 80%;
+    margin-top: 5px;
+  }
+  .madhead {
+    display: flex;
+    flex-direction: row;
+    position: inherit;
+    width: 100%;
+    height: inherit;
+    justify-content: space-between;
+  }
+  #loginRegistry {
+      display: flex;
+      margin-top: 5px;
+      width: 40%;
+      height: 80%;
+      padding-top: 10px;
+      justify-content: end;
+  }
+  #logosi {
+    width: fit-content;
+    height: inherit;
+    font-size: x-large;
+    font-family: 'Impact';
+    margin-left: 5px;
+    margin-top: 3px;
+  }
+  #markethomecont {
+    padding-top: 10px;
+  }
+  .navigatorL {
+    font-size: large;
+    font-weight: 600;
+    font-style: oblique;
+    text-decoration: none;
+    color: black;
+    margin-left: 20px;
+}
+#navigatorRegister {
+    font-size: large;
+    font-weight: 600;
+    font-style: oblique;
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
+}
+#navigatorRegister:hover {
+  color: rgb(220,20,20);
+}
+.navigatorL:hover {
+    color: rgb(220,20,20);
+}
+.navigatorR {
+    font-size: large;
+    font-style: oblique;
+    font-weight: 600;
+    text-decoration: none;
+    color: orangered;
+    margin-right: 20px;
+}
+.main {
+    margin-top: 80px;
+    width: 100vw;
+    height: 100vh;
+}
+.formParent {
+  width: 800px;
+  height: 500px;
+  margin: auto;
+  display: flex;
+  padding-top: 100px;
+}
+.formContainer > form{
+  width: 480px; 
+  height: 300px;
+  display: flex;
+  align-items: center; 
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: white;
+}
+.formContainer > form input{
+  width: 400px;
+  height: 30px;
+  border-radius: 4px;
+  border: solid 1px gray;
+}
+#submitBot {
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: orange;
+  border: solid 1px orange;
+}
+#aboutBot {
+  height: 30px;
+  width: 90px;
+  border-radius: 20px;
+  background-color:lightgray;
+  border: solid 1px rgb(255, 255, 255);
+}
+.formContainer > form h1 {
+  font-family: Helvetica;
+  text-align: center;
+  font-weight: 600;
+  
+}
+.formContainer > form label {
+  font-family: Impact;
+  text-align: center;
+  font-weight: 400;
+}
+#submitBotContainer {
+  width: 405px;
+  display: flex;
+  justify-content: flex-end;
+} 
+#joinUs {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 50px;
+}
+#joinUs > h2 {
+  font-family: Helvetica;
+  color: lightgrey;
+}
+#joinUs > p {
+  font-family: Helvetica;
+  color: lightgray;
+  text-align: center;
+}
+#inbetweenovalthing {
+  width: 80px;
+  height: 300px;
+  background-color: white;
+  border-top-left-radius: 80%;
+  border-bottom-left-radius: 80%;
+}
+.formParent {
+  height: 300px;
+} 
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="madhead">
+        <div id="logoAndNav">
+          <p id="logosi"><strong>BLOG</strong></p>
+          <div id="markethomecont">
+            <a class="navigatorL" href="{{ url_for('home_page') }}">Home</a>
+            <a class="navigatorL" href="">NIL</a>
+          </div>
+        </div>
+        <div id="loginRegistry">
+            <a class="navigatorR" href="">Login</a>
+            <a id="navigatorRegister" href="{{ url_for('register_page') }}">Register</a>
+        </div>
+      </div>
+    </header>
+    <div class="main">
+      <div class="formParent">
+        <div id="joinUs">
+          <h2>Join now</h2>
+          <button id="aboutBot">About us</button>
+        </div>
+        <div id="inbetweenovalthing"></div>
+        <div class="formContainer">
+          <form method="POST" class="registerForm">
+            <h1>Login</h1>
+            {{ loginform.username(placeholder="Username") }}
+            {{ loginform.password(placeholder="Password") }}
+            {{ loginform.submit(id="submitBot") }}
+            <div style="width: 120px; height: 20px;">
+              {% if loginfail %}
+                <p style="color: rgb(216, 20, 20); margin: 0;">
+                  Incorrect user info
+                </p>
+              {% endif %}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
